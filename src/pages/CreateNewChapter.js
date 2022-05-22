@@ -3,21 +3,17 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 import { postData } from "../components/http-request";
-import classes from './CreateNewChapter.module.css';
+import classes from "./CreateNewChapter.module.css";
 import axios from "axios";
 import React from "react";
-
-// 이건 진짜 서버
-const api = "http://localhost:8081img";
 
 const uploadImage = async (blob) => {
   const formData = new FormData();
   formData.append("image", blob);
 
-  // 서버로부터 이미지 주소 받아옴
-  return await axios.post(api, formData).then((res) => {
-    return res.data.url;
-  });
+  const responseData = await postData("img", formData);
+  const responseDataUrl = await responseData.data.url;
+  return responseDataUrl;
 };
 
 const CreateNewChapter = () => {
@@ -30,10 +26,7 @@ const CreateNewChapter = () => {
   const chapterNo = searchParams.get("chapterNo");
 
   const data = location.state;
-  const bearerToken = localStorage.getItem('bearerToken');
-
-
-
+  const bearerToken = localStorage.getItem("bearerToken");
 
   const handleChangeEditor = async () => {
     const regExp = /!\[alt text\]\((?:https?:\/\/([a-zA-Z0-9/.:]{2,256}))\)/g;
@@ -42,8 +35,6 @@ const CreateNewChapter = () => {
     const getImageIndexArray = [];
 
     // 정규표현식이 제대로 작동되고 있는 지 확인해보기
-
-
 
     // 일러스트 위치 정보 꺼내기
     for (let idx = 0; idx < sumLength; idx++) {
@@ -62,23 +53,24 @@ const CreateNewChapter = () => {
     // 일단 소설과 관련된 데이터를 이곳으로 넘겨주어야 json 포맷으로 만들어서 서버측에 보낼 수 있을 것 같다.
     // const result = await postData(`upload/${}/`);
 
-    const result = await axios.post('http://localhost:8081/upload/chapter', {
-      title: chapterTitle, 
-      novelId: location.state.novelId,
-      price: 10000,
-      content: currentContent,
-    }, {
-      headers: {
-        authorization: `Bearer ${bearerToken || ""}`,
-      },
-      credentials: "same-origin",
-    });
+    // const result = await axios.post(
+    //   "http://localhost:8081/upload/chapter",
+    //   {
+    //     title: chapterTitle,
+    //     novelId: location.state.novelId,
+    //     price: 10000,
+    //     content: currentContent,
+    //   },
+    //   {
+    //     headers: {
+    //       authorization: `Bearer ${bearerToken || ""}`,
+    //     },
+    //     credentials: "same-origin",
+    //   }
+    // );
   };
 
-  
-
-  const submitHandler = async () => {
-  };
+  const submitHandler = async () => {};
 
   return (
     <div className={classes.chapter}>
@@ -108,10 +100,13 @@ const CreateNewChapter = () => {
         />
         <div id="toastUIEditor">
           <div id="button">
-            <Link to={`/novel-list/writer/novel/${location.state.title}`} state={{            
-              title: location.state.title, 
-              novelId: location.state.novelId
-            }}>
+            <Link
+              to={`/novel-list/writer/novel/${location.state.title}`}
+              state={{
+                title: location.state.title,
+                novelId: location.state.novelId,
+              }}
+            >
               <button
                 type="submit"
                 className="btn-save"

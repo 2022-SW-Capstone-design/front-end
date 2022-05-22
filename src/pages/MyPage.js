@@ -1,31 +1,26 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { getData } from '../components/http-request';
+import { getData } from "../components/http-request";
 import NavigationBar from "../components/NavigationBar";
 import GlobalStyle from "../GlobalStyle";
 import CurrentPoint from "../components/CurrentPoint";
 import NovelList from "../components/NovelList";
 import userAccount from "../components/userAccount";
-import "./MyPage.css"
-import Card from "../UI/Card"
+import "./MyPage.css";
+import Card from "../UI/Card";
 import NovelContainer from "../components/NovelContainer";
 
 const MyPage = () => {
-  const bearerToken = localStorage.getItem('bearerToken');
+  const bearerToken = localStorage.getItem("bearerToken");
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const getWrittenNovelsData = async () => {
-      const response = await axios.get(`http://localhost:8081/written/novel`, {
-          headers: {
-            Authorization: `Bearer ${bearerToken || ""}`,
-          },
-          credentials: "same-origin",
-        });
-      const resData = await response.data;     
+      const response = await getData("written/novel", bearerToken);
+      const resData = await response.data;
       setData(resData);
-    }
+    };
 
     setTimeout(() => {
       getWrittenNovelsData();
@@ -41,15 +36,16 @@ const MyPage = () => {
       {/* <Card/> */}
       <br />
       {!data && <h1 className="loading">로딩중입니다...</h1>}
-      {data && <div>
-        <CurrentPoint />
-        <br />
-        <br />
-        <div className="novel_list">
-          <h3>내가 쓴 소설 목록</h3>
-          <NovelContainer title="내가 쓴 소설 목록" novelListData={data} />
-        </div>
-        {/* <table className="novel_table">
+      {data && (
+        <div>
+          <CurrentPoint />
+          <br />
+          <br />
+          <div className="novel_list">
+            <h3>내가 쓴 소설 목록</h3>
+            <NovelContainer title="내가 쓴 소설 목록" novelListData={data} />
+          </div>
+          {/* <table className="novel_table">
           <tbody>
             <tr>
               <td><div className="novel_box"><Link className="novel_title" to="/novel-list/novel/harrypotter">해리포터</Link></div></td>
@@ -68,9 +64,8 @@ const MyPage = () => {
             </tr>
           </tbody>
         </table> */}
-      </div>
-      }
-      
+        </div>
+      )}
     </>
   );
 };

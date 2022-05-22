@@ -13,15 +13,12 @@ const LoginButton = ({ loginHandler }) => {
 
   const onSuccess = async (res) => {
     loginHandler(true);
-    const response = await axios.post(`http://localhost:8081/auth/google`, {
-      googleTokenId: res.tokenId, 
-    }, {
-      headers: {
-        "content-type": "application/json",
-      }
+
+    const response = await postData("auth/google", {
+      googleTokenId: res.tokenId,
     });
     const loginSuccessToken = await response.data.token;
-    
+
     setBearerToken(loginSuccessToken);
     localStorage.removeItem("bearerToken");
     localStorage.setItem("bearerToken", loginSuccessToken);
