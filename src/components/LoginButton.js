@@ -8,6 +8,8 @@ import axios from "axios";
 const LoginButton = ({ loginHandler }) => {
   const { currentToken, setBearerToken } = useContext(BearerTokenContext);
 
+  const getTokenIdByNetlifyKey =
+    "oauth2_ss::https://gregarious-gumdrop-867b80.netlify.app::1::DEFAULT::_ss_";
   const clientId =
     "112172327061-95mqb878sgpt8t955rkkdug7mvgco8od.apps.googleusercontent.com";
 
@@ -18,12 +20,13 @@ const LoginButton = ({ loginHandler }) => {
       googleTokenId: res.tokenId,
     });
 
-    const loginSuccessToken = await response.data.token;
+    console.log(response);
 
-    setBearerToken(loginSuccessToken);
-    localStorage.removeItem("bearerToken");
-    localStorage.setItem("bearerToken", loginSuccessToken);
-    const bearerToken = localStorage.getItem("bearerToken");
+    // const loginSuccessToken = await response.data.token;
+    // setBearerToken(loginSuccessToken);
+    localStorage.removeItem(getTokenIdByNetlifyKey);
+    const bearerToken = localStorage.getItem(getTokenIdByNetlifyKey);
+    console.log(bearerToken);
     setBearerToken(bearerToken);
   };
 

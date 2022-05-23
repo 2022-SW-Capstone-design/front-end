@@ -2,12 +2,13 @@ import { Editor } from "@toast-ui/react-editor";
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { postData } from "../../components/http-request";
 
 const ToastUIEditor = () => {
   const [initContent, setInitContent] = useState("");
   const location = useLocation();
   const bearerToken = localStorage.getItem("bearerToken");
-  const { novelId, chapterId, title } = location.state;
+  const { novelId, chapterId } = location.state;
   const editorRef = useRef("");
 
   const api = "http://localhost:8081/upload/img";
@@ -50,26 +51,12 @@ const ToastUIEditor = () => {
       };
     });
 
-    const finalIllustDataToSendServer = {
+    const responseData = await postData("upload/illust", {
       novelId,
       chapterId,
       imgURLs,
       price: 20000,
-    };
-
-    // 데이터를 서버로 보내기
-    const responseData = await axios.post(
-      `http://localhost:8081/upload/illust`,
-      finalIllustDataToSendServer,
-      {
-        headers: {
-          authorization: `Bearer ${bearerToken || ""}`,
-        },
-      },
-      {
-        credentials: "same-origin",
-      }
-    );
+    });
 
     console.log(responseData);
   };

@@ -1,14 +1,9 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { getData } from "../components/http-request";
 import NavigationBar from "../components/NavigationBar";
 import GlobalStyle from "../GlobalStyle";
 import CurrentPoint from "../components/CurrentPoint";
-import NovelList from "../components/NovelList";
-import userAccount from "../components/userAccount";
 import "./MyPage.css";
-import Card from "../UI/Card";
 import NovelContainer from "../components/NovelContainer";
 
 const MyPage = () => {
@@ -19,6 +14,7 @@ const MyPage = () => {
     const getWrittenNovelsData = async () => {
       const response = await getData("written/novel", bearerToken);
       const resData = await response.data;
+      console.log(resData);
       setData(resData);
     };
 

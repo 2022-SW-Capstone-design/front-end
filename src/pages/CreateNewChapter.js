@@ -43,31 +43,6 @@ const CreateNewChapter = () => {
       getImageIndexArray.push(findImageIndex);
       idx = findImageIndex;
     }
-
-    // currentContent.setReadTrue(true);
-
-    // 현재 콘텐츠에서 일러스트 이미지와 텍스트를 따로 떼어내기 (나중에 할 예정)
-
-    // 분리된 데이터를 JSON 포맷으로 묶어 서버측에 보내면 챕터 등록 페이지로 자동 이동했을 때 등록한 챕터가 보여져야 한다.
-
-    // 일단 소설과 관련된 데이터를 이곳으로 넘겨주어야 json 포맷으로 만들어서 서버측에 보낼 수 있을 것 같다.
-    // const result = await postData(`upload/${}/`);
-
-    // const result = await axios.post(
-    //   "http://localhost:8081/upload/chapter",
-    //   {
-    //     title: chapterTitle,
-    //     novelId: location.state.novelId,
-    //     price: 10000,
-    //     content: currentContent,
-    //   },
-    //   {
-    //     headers: {
-    //       authorization: `Bearer ${bearerToken || ""}`,
-    //     },
-    //     credentials: "same-origin",
-    //   }
-    // );
   };
 
   const submitHandler = async () => {};
