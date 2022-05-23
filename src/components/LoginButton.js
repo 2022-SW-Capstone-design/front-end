@@ -17,6 +17,7 @@ const LoginButton = ({ loginHandler }) => {
     const response = await postData("auth/google", {
       googleTokenId: res.tokenId,
     });
+
     const loginSuccessToken = await response.data.token;
 
     setBearerToken(loginSuccessToken);
