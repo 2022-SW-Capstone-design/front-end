@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const baseURL =
-  "http://ec2-52-78-142-179.ap-northeast-2.compute.amazonaws.com:8081/";
+  "http://ec2-52-78-142-179.ap-northeast-2.compute.amazonaws.com:8081";
 
 export const getData = async (url, bearerToken) => {
   const response = await axios.get(`${baseURL}/${url}`, {
