@@ -1,13 +1,10 @@
 import DefaultImageSelectModal from "../components/DefaultImageSelectModal";
-import { Link } from "react-router-dom";
-import { BearerTokenContext } from "../App";
-import React, { useState, useReducer, useRef, useContext } from "react";
+import React, { useState, useReducer, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import GlobalStyle from "../GlobalStyle";
 import { postData } from "../components/http-request";
 import userAccount from "../components/userAccount";
-import axios from "axios";
-import {Button} from'react-bootstrap';
+import { Button } from "react-bootstrap";
 import "./CreateNewNovel.css";
 
 const reducer = (state, action) => {
@@ -28,32 +25,30 @@ const reducer = (state, action) => {
 };
 
 const CreateNewNovel = () => {
-  const { currentToken, setBearerToken } = useContext(BearerTokenContext);
   const [imageModal, setImageModal] = useState(false);
 
   const descriptionValue = useRef(null);
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   const [currentData, changeCurrentData] = useReducer(reducer, {
     title: "",
     description: "",
     genre: "판타지",
     defaultPrice: 1000,
-    coverImage: null, 
+    coverImage: null,
   });
 
   const showImageModalHandler = (e) => {
     e.preventDefault();
-    console.log('안녕하세요');
     setImageModal(true);
-  }
+  };
 
   const handleSubmit = async () => {
     const submitData = {
       ...currentData,
       description: descriptionValue.current.value,
-    }; 
-  
-    const bearerToken = localStorage.getItem('bearerToken');
+    };
+
+    const bearerToken = localStorage.getItem("tokenId");
 
     await postData("upload/novel", submitData, bearerToken);
     userAccount.writingNovelList.push(submitData);
@@ -96,7 +91,9 @@ const CreateNewNovel = () => {
           </select>
           <br />
           <br />
-          <label className="novel_intro" htmlFor="description">작품 소개</label>
+          <label className="novel_intro" htmlFor="description">
+            작품 소개
+          </label>
           <textarea
             id="description"
             name="description"
@@ -107,7 +104,15 @@ const CreateNewNovel = () => {
           />
           <br />
           <br />
-          <Button className="img_regist" variant="Dark"  type="button" onClick={showImageModalHandler} style={{ margin: "20px"}}>이미지 업로드하기</Button>
+          <Button
+            className="img_regist"
+            variant="Dark"
+            type="button"
+            onClick={showImageModalHandler}
+            style={{ margin: "20px" }}
+          >
+            이미지 업로드하기
+          </Button>
           {imageModal && (
             <DefaultImageSelectModal
               modalOpen={setImageModal}
@@ -115,11 +120,18 @@ const CreateNewNovel = () => {
             />
           )}
           <div className="button_bundle">
-            <Button className="cancel" variant="secondary">취소</Button>
-            <Button className="novel_regist" variant="Dark" type="submit" onClick={() => {
-              handleSubmit();
-              navigate('/mypage');
-            }}>
+            <Button className="cancel" variant="secondary">
+              취소
+            </Button>
+            <Button
+              className="novel_regist"
+              variant="Dark"
+              type="submit"
+              onClick={() => {
+                handleSubmit();
+                navigate("/mypage");
+              }}
+            >
               소설 올리기
             </Button>
           </div>
