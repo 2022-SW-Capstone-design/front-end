@@ -2,7 +2,11 @@ import { Editor } from "@toast-ui/react-editor";
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { postData } from "../../components/http-request";
+import {
+  getData,
+  postData,
+  postDataByForm,
+} from "../../components/http-request";
 
 const ToastUIEditor = () => {
   const [initContent, setInitContent] = useState("");
@@ -10,8 +14,6 @@ const ToastUIEditor = () => {
   const bearerToken = localStorage.getItem("bearerToken");
   const { novelId, chapterId } = location.state;
   const editorRef = useRef("");
-
-  const api = "http://localhost:8081/upload/img";
   const imageURLData = [];
   const imageIdxData = [];
 
@@ -20,11 +22,8 @@ const ToastUIEditor = () => {
     formData.append("image", blob);
 
     // 서버로부터 이미지 주소 받아옴
-    const responseData = await axios.post(api, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const responseData = await postDataByForm("upload/img", formData);
+
     const getImageURLData = await responseData.data.url;
     imageURLData.push(getImageURLData);
 
@@ -61,16 +60,9 @@ const ToastUIEditor = () => {
 
   useEffect(() => {
     const getNovelDataFromServer = async () => {
-      const responseData = await axios.get(
-        `http://localhost:8081/content/novel/${novelId}/chapter/${chapterId}`,
-        {
-          headers: {
-            authorization: `Bearer ${bearerToken || ""}`,
-          },
-        },
-        {
-          credentials: "same-origin",
-        }
+      const responseData = await getData(
+        `content/novel/${novelId}/chapter/${chapterId}`,
+        bearerToken
       );
       const content = await responseData.data.chapterContent;
       setInitContent(content);

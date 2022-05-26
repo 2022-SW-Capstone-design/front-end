@@ -24,6 +24,15 @@ export const postData = async (url, data, token) => {
     credentials: "same-origin",
   });
   const responseData = response.data;
+  return responseData;
+};
 
+export const postDataByForm = async (url, data) => {
+  const response = await axios.post(`${baseURL}/${url}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  const responseData = response.data;
   return responseData;
 };
