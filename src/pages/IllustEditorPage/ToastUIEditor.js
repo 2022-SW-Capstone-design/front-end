@@ -57,8 +57,6 @@ const ToastUIEditor = () => {
       imgURLs,
       price: 20000,
     });
-
-    console.log(responseData);
   };
 
   useEffect(() => {

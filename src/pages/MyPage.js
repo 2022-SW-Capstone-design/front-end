@@ -7,15 +7,13 @@ import "./MyPage.css";
 import NovelContainer from "../components/NovelContainer";
 
 const MyPage = () => {
-  const bearerToken = localStorage.getItem("bearerToken");
+  const bearerToken = localStorage.getItem("tokenId");
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const getWrittenNovelsData = async () => {
       const response = await getData("written/novel", bearerToken);
-      const resData = await response.data;
-      console.log(resData);
-      setData(resData);
+      setData(response);
     };
 
     setTimeout(() => {
