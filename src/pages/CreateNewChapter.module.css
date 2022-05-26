@@ -1,5 +1,32 @@
 .chapter {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  width: 200px;
+}
+
+.chapterBtn {
+  display: flex;
+  margin: 10px;
+  padding-left: 425px;
+  align-items: center;
+}
+
+.BtnRegister {
+  margin-top: 20px;
+  background-color: #38d9a9;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.BtnRegister:hover {
+  background-color: #31bb91;
+  color: azure;
+  transition: 0.2s all;
+}
+
+.BtnRegister:active {
+  background-color: #279574;
 }
