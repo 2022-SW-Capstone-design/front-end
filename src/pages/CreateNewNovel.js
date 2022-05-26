@@ -6,6 +6,7 @@ import { postData } from "../components/http-request";
 import userAccount from "../components/userAccount";
 import { Button } from "react-bootstrap";
 import "./CreateNewNovel.css";
+import classes from "./CreateNewNovel.module.css";
 
 const reducer = (state, action) => {
   if (action.type === "TITLE") {
@@ -58,7 +59,7 @@ const CreateNewNovel = () => {
   return (
     <>
       <GlobalStyle />
-      <div className="container">
+      <div className={classes.Container}>
         <h1>소설 작성하기</h1>
         <br />
         <br />

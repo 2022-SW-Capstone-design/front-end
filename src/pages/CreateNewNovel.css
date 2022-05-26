@@ -1,52 +1,32 @@
-.container{
-/*     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
- */ 
-    
-    margin-left: 10px;
-    margin-top: 10px;
-    font-weight: 600;
-    
+.write_form label {
+  width: 15%;
+  position: relative;
 }
-.container h1{
-    font-weight: 700;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-style: none none double none;
-    border-color: #38d9a9;
+.novel_intro {
+  bottom: 42px;
 }
-.write_form label{
-    width: 15%;
-    position: relative;
-}
-.novel_intro{
-    bottom: 42px;
-}
-.write_form input{
-    width: 85%;
-    margin: 10px 0px 10px 0px ;
+.write_form input {
+  width: 85%;
+  margin: 10px 0px 10px 0px;
 }
 
-.write_form textarea{
-    width: 85%;
+.write_form textarea {
+  width: 85%;
 }
 
-.img_regist{
-    position: relative;
-    right: 20px;
-    background-color: #38d9a9;
-    
+.img_regist {
+  position: relative;
+  right: 20px;
+  background-color: #38d9a9;
 }
-.button_bundle{
-    position: relative;
-    left: 32%;
+.button_bundle {
+  position: relative;
+  left: 32%;
 }
-.cancel{
-    width: 70px;
-    margin-right: 30px;
+.cancel {
+  width: 70px;
+  margin-right: 30px;
 }
-.novel_regist{
-    background-color: #38d9a9;
+.novel_regist {
+  background-color: #38d9a9;
 }

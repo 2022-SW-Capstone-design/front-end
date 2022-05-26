@@ -1,0 +1,21 @@
+.Container {
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Container h1 {
+  font-weight: 700;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-style: none none double none;
+  border-color: #38d9a9;
+}
+
+.Container form {
+  align-items: center;
+  width: 600px;
+  font-size: 20px;
+}
