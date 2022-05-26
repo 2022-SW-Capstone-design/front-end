@@ -106,11 +106,10 @@ const CreateNewNovel = () => {
           <br />
           <br />
           <Button
-            className="img_regist"
+            className={`img_regist ${classes["Btn-img"]}`}
             variant="Dark"
             type="button"
             onClick={showImageModalHandler}
-            style={{ margin: "20px" }}
           >
             이미지 업로드하기
           </Button>
@@ -121,11 +120,11 @@ const CreateNewNovel = () => {
             />
           )}
           <div className="button_bundle">
-            <Button className="cancel" variant="secondary">
+            <Button className={`cancel ${classes["Btn"]}`} variant="secondary">
               취소
             </Button>
             <Button
-              className="novel_regist"
+              className={`novel_regist ${classes["Btn"]} ${classes["Btn-upload"]}`}
               variant="Dark"
               type="submit"
               onClick={() => {

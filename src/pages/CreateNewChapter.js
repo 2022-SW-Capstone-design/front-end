@@ -49,10 +49,15 @@ const CreateNewChapter = () => {
 
   return (
     <div className={classes.chapter}>
-      <h1>소설 작성하기</h1>
+      <h1>챕터 작성하기</h1>
       <form onSubmit={submitHandler}>
-        <div>
-          <label htmlFor="chapterTitle">챕터명</label>
+        <div style={{ margin: "10px", textAlign: "center" }}>
+          <label
+            htmlFor="chapterTitle"
+            style={{ marginRight: "10px", fontSize: "20px" }}
+          >
+            챕터명
+          </label>
           <input
             id="chapterTitle"
             type="text"
@@ -74,7 +79,7 @@ const CreateNewChapter = () => {
           ref={editorRef}
         />
         <div id="toastUIEditor">
-          <div id="button">
+          <div id="button" className={classes.chapterBtn}>
             <Link
               to={`/novel-list/writer/novel/${location.state.title}`}
               state={{
@@ -84,7 +89,7 @@ const CreateNewChapter = () => {
             >
               <button
                 type="submit"
-                className="btn-save"
+                className={`btn-save ${classes.BtnRegister}`}
                 onClick={handleChangeEditor}
               >
                 챕터 등록하기
