@@ -10,6 +10,7 @@ const Viewer = () => {
       <ToastUIViewer
         illustId={location.state.selectedIllustId}
         musicId={location.state.selectedMusicId}
+        title={location.state.title}
       />
     </div>
   );

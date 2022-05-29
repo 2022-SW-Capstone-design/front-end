@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
 import "@toast-ui/editor/dist/toastui-editor.css";
+
+import { useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Editor } from "@toast-ui/react-editor";
-import { getData, postData } from "../components/http-request";
+import { postData } from "../components/http-request";
 import classes from "./CreateNewChapter.module.css";
-import axios from "axios";
 import React from "react";
 
 const uploadImage = async (blob) => {
@@ -17,17 +17,12 @@ const uploadImage = async (blob) => {
 };
 
 const CreateNewChapter = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const [chapterTitle, setChapterTitle] = useState("");
-  const [readTrue, setReadTrue] = useState(false);
-  const [content, setContent] = useState("");
   const location = useLocation();
   const editorRef = useRef();
-  const chapterNo = searchParams.get("chapterNo");
   const bearerToken = localStorage.getItem("tokenId");
 
   const handleChangeEditor = async () => {
-    const regExp = /!\[alt text\]\((?:https?:\/\/([a-zA-Z0-9/.:]{2,256}))\)/g;
     const currentContent = editorRef.current.getInstance().getMarkdown();
     const sumLength = currentContent.length;
     const getImageIndexArray = [];
@@ -41,7 +36,7 @@ const CreateNewChapter = () => {
     }
 
     // 정보 보내기
-    const result = await postData(
+    await postData(
       `upload/chapter`,
       {
         title: chapterTitle,
@@ -103,8 +98,6 @@ const CreateNewChapter = () => {
                 챕터 등록하기
               </button>
             </Link>
-
-            {/* {readTrue && <Viewer initialValue={content} />} */}
           </div>
         </div>
       </form>

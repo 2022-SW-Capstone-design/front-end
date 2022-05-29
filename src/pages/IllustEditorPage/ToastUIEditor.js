@@ -22,7 +22,11 @@ const ToastUIEditor = () => {
     formData.append("image", blob);
 
     // 서버로부터 이미지 주소 받아옴
-    const responseData = await postDataByForm("upload/img", formData);
+    const responseData = await postDataByForm(
+      "upload/img",
+      formData,
+      bearerToken
+    );
     const getImageURLData = await responseData.url;
     imageURLData.push(getImageURLData);
 

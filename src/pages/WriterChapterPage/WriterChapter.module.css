@@ -1,4 +1,8 @@
 .WriterChapter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   margin: 30px;
 }
 
@@ -13,4 +17,77 @@
 .WriterChapter button {
   width: 200px;
   height: 30px;
+}
+
+.WriterChapter__contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.WriterChapter__ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  list-style: none;
+  margin-bottom: 100px;
+}
+
+.WriterChapterItem {
+  position: relative;
+  width: 60vw;
+  height: 100px;
+
+  padding: 20px 30px;
+  border: 2px solid #38d9a9;
+  border-radius: 10px;
+}
+
+.WriterChapterItem:hover {
+  background-color: #eeeeee;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+
+.WriterChapterItem h3 {
+  font-size: 20px;
+}
+
+.WriterChapterItem__Btns {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.Btn {
+  background-color: #3dadf2;
+  color: aliceblue;
+  border: none;
+  margin: 10px;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.Btn--upload-chapter {
+  background-color: #3dadf2;
+  color: aliceblue;
+  border: none;
+
+  text-align: center;
+  padding-bottom: 35px;
+  padding-top: 10px;
+
+  border-radius: 5px;
+}
+
+.Btn--upload-chapter:hover {
+  background-color: #3089c0;
+  transition: 0.2s all;
+}
+
+.Btn:hover {
+  background-color: #3089c0;
+  transition: 0.2s all;
 }

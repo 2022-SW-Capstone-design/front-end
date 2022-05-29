@@ -46,19 +46,17 @@ const WriterChapter = () => {
       <div className={classes.WriterChapter}>
         {!chapterData && loadingData && <h1>로딩중입니다</h1>}
         {!!chapterData && (
-          <>
-            <div>
-              <h1>챕터 목록</h1>
-              <ul>
-                {chapterData?.chapters?.map((chapterObj, idx) => (
-                  <WriterChapterItem
-                    value={[chapterObj, idx, state.title]}
-                    key={idx}
-                  />
-                ))}
-              </ul>
-            </div>
-          </>
+          <div className={classes.WriterChapter__contents}>
+            <h1>챕터 목록</h1>
+            <ul className={classes.WriterChapter__ul}>
+              {chapterData?.chapters?.map((chapterObj, idx) => (
+                <WriterChapterItem
+                  value={[chapterObj, idx, state.title]}
+                  key={idx}
+                />
+              ))}
+            </ul>
+          </div>
         )}
         {!chapterData && !chapterData?.chapters?.length && !loadingData && (
           <>
@@ -73,7 +71,9 @@ const WriterChapter = () => {
             novelId: data.novelId,
           }}
         >
-          <button>챕터 작성하기</button>
+          <button className={classes["Btn--upload-chapter"]}>
+            챕터 작성하기
+          </button>
         </Link>
       </div>
     </>

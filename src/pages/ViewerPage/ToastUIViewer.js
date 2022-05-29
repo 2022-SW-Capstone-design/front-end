@@ -6,7 +6,7 @@ import { getData } from "../../components/http-request";
 import MusicPlayer from "./MusicPlayer";
 import classes from "./Viewer.module.css";
 
-const ToastUIViewer = ({ illustId, musicId }) => {
+const ToastUIViewer = ({ illustId, musicId, title }) => {
   const bearerToken = localStorage.getItem("tokenId");
   const location = useLocation();
   const [viewerContent, setViewerContent] = useState("");
@@ -27,9 +27,11 @@ const ToastUIViewer = ({ illustId, musicId }) => {
       const responseData = await getData(
         `content/novel/${novelId}/chapter/${chapterId}?illustSet=${illustId}&musicSet=${musicId}`
       );
+
       if (responseData.musicTracks.length) {
         setMusicTrack(responseData.musicTracks);
       }
+
       const novelContent = await responseData.chapterContent;
       setViewerContent(novelContent);
     };
@@ -39,12 +41,17 @@ const ToastUIViewer = ({ illustId, musicId }) => {
   }, []);
 
   return (
-    <div className={classes.ViewerAndMusicPlayer}>
-      {musicTrack && musicTrack.length && (
-        <MusicPlayer musicList={musicTrack} />
-      )}
-      {viewerContent && <Viewer initialValue={viewerContent} />}
-    </div>
+    <>
+      <h1 style={{ marginTop: "50px" }}>{title}</h1>
+      <div className={classes.ViewerAndMusicPlayer}>
+        {musicTrack && musicTrack.length && (
+          <MusicPlayer musicList={musicTrack} />
+        )}
+        {viewerContent && (
+          <Viewer initialValue={viewerContent} style={{ fontSize: "20px" }} />
+        )}
+      </div>
+    </>
   );
 };
 

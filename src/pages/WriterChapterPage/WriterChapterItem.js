@@ -1,30 +1,54 @@
-import { Link } from 'react-router-dom';
+import { useCallback } from "react";
+import { Link } from "react-router-dom";
+import classes from "./WriterChapter.module.css";
+import { useNavigate } from "react-router-dom";
 
 const WriterChapterItem = ({ value }) => {
+  const navigate = useNavigate();
+
+  const goToSelectIllustMusicPageHandler = useCallback(
+    () =>
+      navigate(`/novel-list/novel/${value[0].id}/select`, {
+        replace: true,
+        state: {
+          novelId: value[0].Novel_id,
+          chapterId: value[0].id,
+          title: value[0].title,
+        },
+      }),
+    [navigate, value]
+  );
+
   return (
-      <li>
-        <Link to={`/novel-list/novel/${value[0].id}/select`} state={{
-        novelId: value[0].Novel_id,
-        chapterId: value[0].id,
-        }}>
-            {`${value[1] + 1}화 - ${value[0].title}`}
-          </Link>
-          <Link to={`/novel-list/novel/${value[0].id}/add-illust`} state={{
-          novelId: value[0].Novel_id,
-          chapterId: value[0].id,
-          title: value[2],
-        }}>
-          <button>일러스트 추가</button>
+    <li
+      className={classes.WriterChapterItem}
+      onClick={goToSelectIllustMusicPageHandler}
+    >
+      <h3>{`${value[1] + 1}화 - ${value[0].title}`}</h3>
+      <div className={classes.WriterChapterItem__Btns}>
+        <Link
+          to={`/novel-list/novel/${value[0].id}/add-illust`}
+          state={{
+            novelId: value[0].Novel_id,
+            chapterId: value[0].id,
+            title: value[2],
+          }}
+        >
+          <button className={classes.Btn}>일러스트 추가</button>
         </Link>
-        <Link to={`/novel-list/novel/${value[0].id}/add-music`} state={{
-          novelId: value[0].Novel_id,
-          chapterId: value[0].id,
-          title: value[2],
-        }}>
-          <button>음악 추가</button>
+        <Link
+          to={`/novel-list/novel/${value[0].id}/add-music`}
+          state={{
+            novelId: value[0].Novel_id,
+            chapterId: value[0].id,
+            title: value[2],
+          }}
+        >
+          <button className={classes.Btn}>음악 추가</button>
         </Link>
-      </li>
-  )
+      </div>
+    </li>
+  );
 };
 
 export default WriterChapterItem;
