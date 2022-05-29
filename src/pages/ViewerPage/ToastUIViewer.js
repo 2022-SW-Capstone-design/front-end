@@ -7,7 +7,7 @@ import MusicPlayer from "./MusicPlayer";
 import classes from "./Viewer.module.css";
 
 const ToastUIViewer = ({ illustId, musicId }) => {
-  const bearerToken = localStorage.getItem("bearerToken");
+  const bearerToken = localStorage.getItem("tokenId");
   const location = useLocation();
   const [viewerContent, setViewerContent] = useState("");
   const [musicTrack, setMusicTrack] = useState(null);

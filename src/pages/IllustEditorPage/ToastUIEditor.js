@@ -9,8 +9,9 @@ import {
 
 const ToastUIEditor = () => {
   const [initContent, setInitContent] = useState("");
+  const [loadingImage, setLoadingImage] = useState(false);
   const location = useLocation();
-  const bearerToken = localStorage.getItem("bearerToken");
+  const bearerToken = localStorage.getItem("tokenId");
   const { novelId, chapterId } = location.state;
   const editorRef = useRef("");
   const imageURLData = [];
@@ -23,7 +24,6 @@ const ToastUIEditor = () => {
     // 서버로부터 이미지 주소 받아옴
     const responseData = await postDataByForm("upload/img", formData);
     const getImageURLData = await responseData.url;
-    console.log(getImageURLData);
     imageURLData.push(getImageURLData);
 
     return getImageURLData;
@@ -49,20 +49,26 @@ const ToastUIEditor = () => {
       };
     });
 
-    await postData("upload/illust", {
-      novelId,
-      chapterId,
-      imgURLs,
-      price: 20000,
-    });
+    await postData(
+      "upload/illust",
+      {
+        novelId,
+        chapterId,
+        imgURLs,
+        price: 20000,
+      },
+      bearerToken
+    );
   };
 
   useEffect(() => {
     const getNovelDataFromServer = async () => {
+      setLoadingImage(true);
       const responseData = await getData(
         `content/novel/${novelId}/chapter/${chapterId}`,
         bearerToken
       );
+      setLoadingImage(false);
 
       const content = await responseData.chapterContent;
       setInitContent(content);

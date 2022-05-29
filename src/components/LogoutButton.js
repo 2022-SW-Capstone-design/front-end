@@ -1,6 +1,6 @@
 import { GoogleLogout } from "react-google-login";
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const clientId =
   "112172327061-95mqb878sgpt8t955rkkdug7mvgco8od.apps.googleusercontent.com";
@@ -8,7 +8,7 @@ const clientId =
 const LogoutButton = ({ logoutHandler }) => {
   const onSuccess = () => {
     logoutHandler(false);
-    localStorage.removeItem("bearerToken"); 
+    localStorage.removeItem("tokenId");
   };
 
   useEffect(() => {
