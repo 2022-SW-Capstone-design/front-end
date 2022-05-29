@@ -1,7 +1,6 @@
 import { Editor } from "@toast-ui/react-editor";
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import {
   getData,
   postData,
@@ -23,8 +22,8 @@ const ToastUIEditor = () => {
 
     // 서버로부터 이미지 주소 받아옴
     const responseData = await postDataByForm("upload/img", formData);
-
-    const getImageURLData = await responseData.data.url;
+    const getImageURLData = await responseData.url;
+    console.log(getImageURLData);
     imageURLData.push(getImageURLData);
 
     return getImageURLData;
@@ -50,7 +49,7 @@ const ToastUIEditor = () => {
       };
     });
 
-    const responseData = await postData("upload/illust", {
+    await postData("upload/illust", {
       novelId,
       chapterId,
       imgURLs,
@@ -64,7 +63,8 @@ const ToastUIEditor = () => {
         `content/novel/${novelId}/chapter/${chapterId}`,
         bearerToken
       );
-      const content = await responseData.data.chapterContent;
+
+      const content = await responseData.chapterContent;
       setInitContent(content);
     };
 

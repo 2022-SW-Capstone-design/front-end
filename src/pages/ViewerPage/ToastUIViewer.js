@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getData } from "../../components/http-request";
 import MusicPlayer from "./MusicPlayer";
-import axios from "axios";
+import classes from "./Viewer.module.css";
 
 const ToastUIViewer = ({ illustId, musicId }) => {
   const bearerToken = localStorage.getItem("bearerToken");
@@ -19,7 +19,7 @@ const ToastUIViewer = ({ illustId, musicId }) => {
         `content/novel/${novelId}/chapter/${chapterId}`,
         bearerToken
       );
-      const content = await responseData.data.chapterContent;
+      const content = await responseData.chapterContent;
       setViewerContent(content);
     };
 
@@ -39,12 +39,12 @@ const ToastUIViewer = ({ illustId, musicId }) => {
   }, []);
 
   return (
-    <>
+    <div className={classes.ViewerAndMusicPlayer}>
       {musicTrack && musicTrack.length && (
         <MusicPlayer musicList={musicTrack} />
       )}
       {viewerContent && <Viewer initialValue={viewerContent} />}
-    </>
+    </div>
   );
 };
 
