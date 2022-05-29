@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
-import { postData } from "../components/http-request";
+import { getData, postData } from "../components/http-request";
 import classes from "./CreateNewChapter.module.css";
 import axios from "axios";
 import React from "react";
@@ -24,17 +24,13 @@ const CreateNewChapter = () => {
   const location = useLocation();
   const editorRef = useRef();
   const chapterNo = searchParams.get("chapterNo");
-
-  const data = location.state;
-  const bearerToken = localStorage.getItem("bearerToken");
+  const bearerToken = localStorage.getItem("tokenId");
 
   const handleChangeEditor = async () => {
     const regExp = /!\[alt text\]\((?:https?:\/\/([a-zA-Z0-9/.:]{2,256}))\)/g;
     const currentContent = editorRef.current.getInstance().getMarkdown();
     const sumLength = currentContent.length;
     const getImageIndexArray = [];
-
-    // 정규표현식이 제대로 작동되고 있는 지 확인해보기
 
     // 일러스트 위치 정보 꺼내기
     for (let idx = 0; idx < sumLength; idx++) {
@@ -43,6 +39,18 @@ const CreateNewChapter = () => {
       getImageIndexArray.push(findImageIndex);
       idx = findImageIndex;
     }
+
+    // 정보 보내기
+    const result = await postData(
+      `upload/chapter`,
+      {
+        title: chapterTitle,
+        novelId: location.state.novelId,
+        price: 10000,
+        content: currentContent,
+      },
+      bearerToken
+    );
   };
 
   const submitHandler = async () => {};

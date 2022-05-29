@@ -20,26 +20,20 @@ const WriterChapter = () => {
   useEffect(() => {
     const getNovelDataFromNovelId = async () => {
       const response = await getData(`info/novel/${data.novelId}`, bearerToken);
-      const responseData = await response.data;
-      setNovelData(responseData);
+      setNovelData(response);
     };
 
     const getChapterDataFromNovelId = async () => {
       const response = await getData(`list/novel/${data.novelId}`, bearerToken);
-      const responseData = await response.data;
-      setChapterData(responseData);
+      setChapterData(response);
     };
 
     setLoadingData(true);
 
-    setTimeout(() => {
-      getNovelDataFromNovelId();
-      getChapterDataFromNovelId();
-      setLoadingData(false);
-    }, 500);
+    getNovelDataFromNovelId();
+    getChapterDataFromNovelId();
+    setLoadingData(false);
   }, [data.novelId, bearerToken]);
-
-  console.log(novelData, chapterData);
 
   const state =
     location.state || JSON.parse(localStorage.getItem("currentNovel"));
