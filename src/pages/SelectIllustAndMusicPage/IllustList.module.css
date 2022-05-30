@@ -2,8 +2,24 @@
   width: 100%;
   padding-bottom: 5vh;
   margin: 5px;
-
   border-radius: 10px;
+
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.illust-list::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.illust-list::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+.illust-list::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid #2dae87; /* should match background, can't be transparent */
+  background-color: #38d9a9;
 }
 
 .illust-list h3 {

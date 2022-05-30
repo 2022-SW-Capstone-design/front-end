@@ -1,0 +1,8 @@
+.MusicItem {
+  border: 2px solid orange;
+  border-radius: 5px;
+}
+
+.MusicItem--selected {
+  border: 2px solid #2dae87;
+}

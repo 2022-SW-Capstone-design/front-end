@@ -1,8 +1,12 @@
 .music-list {
   margin: 10px;
   padding: 10px;
-  background-color: rgba(2, 213, 213, 0.828);
+  background-color: #ebfbf692;
+  border: 2px solid #38d9a9;
   border-radius: 10px;
+
+  height: 80vh;
+  overflow-y: auto;
 }
 
 .music-list h3 {
@@ -13,11 +17,12 @@
   background-color: rgba(245, 245, 245, 0.414);
   border-radius: 2px;
   box-shadow: 5px 5px 5px lightgray;
+  margin-bottom: 5px;
 }
 
 .music-list li:hover {
   background-color: whitesmoke;
   box-shadow: 5px 5px 5px rgb(70, 70, 70);
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }

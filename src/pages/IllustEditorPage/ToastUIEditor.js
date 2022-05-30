@@ -6,6 +6,7 @@ import {
   postData,
   postDataByForm,
 } from "../../components/http-request";
+import classes from "./ToastUIEditor.module.css";
 
 const ToastUIEditor = () => {
   const [initContent, setInitContent] = useState("");
@@ -67,12 +68,10 @@ const ToastUIEditor = () => {
 
   useEffect(() => {
     const getNovelDataFromServer = async () => {
-      setLoadingImage(true);
       const responseData = await getData(
         `content/novel/${novelId}/chapter/${chapterId}`,
         bearerToken
       );
-      setLoadingImage(false);
 
       const content = await responseData.chapterContent;
       setInitContent(content);
@@ -93,8 +92,15 @@ const ToastUIEditor = () => {
           initialValue={initContent}
           hooks={{
             addImageBlobHook: async (blob, callback) => {
+              setLoadingImage(true);
+              console.log("이미지 로딩중...");
+
               const img_url = await uploadImage(blob);
               callback(img_url, "alt text");
+
+              setLoadingImage(false);
+              console.log("이미지 로딩 완료!");
+
               return false;
             },
           }}
@@ -102,7 +108,10 @@ const ToastUIEditor = () => {
         />
       )}
       <Link to={`/mypage`}>
-        <button className="btn-save" onClick={handleChangeEditor}>
+        <button
+          onClick={handleChangeEditor}
+          className={classes.ToastUIEditorBtn}
+        >
           챕터 등록하기
         </button>
       </Link>

@@ -1,4 +1,4 @@
-.page-title{
+.page-title {
   text-align: center;
 }
 .illust-music-grid {
@@ -12,15 +12,15 @@
   list-style-type: none;
 }
 
-.choose-cancel{
+.choose-cancel {
   margin: 5px;
-  float:left;
+  float: left;
 }
-.chapter-read{
+.chapter-read {
   margin: 5px;
-  float:right;
+  float: right;
 }
-.chapter-read Button{
+.chapter-read Button {
   background-color: #38d9a9;
   border-color: #38d9a9;
 }
