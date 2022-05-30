@@ -1,0 +1,44 @@
+.IllustItem {
+  z-index: 20;
+  position: relative;
+  width: 400px;
+  margin: 0;
+  background-color: aliceblue;
+  border-radius: 10px;
+  border: 5px solid transparent;
+}
+
+.IllustItem::after {
+  opacity: 1;
+  z-index: 50;
+  content: "선택";
+  font-size: 40px;
+  font-weight: 400;
+  color: black;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  opacity: 0;
+  transition: 0.5s all;
+  display: inline-block;
+
+  pointer-events: initial;
+}
+
+.IllustItem:hover {
+  position: relative;
+  transition: 0.2s all;
+  cursor: pointer;
+  border: 5px solid #2dae87;
+  filter: brightness(0.5);
+}
+
+.IllustItem:hover::after {
+  opacity: 1;
+}
+
+.IllustItem img {
+  width: 390px;
+  height: 200px;
+  border-radius: 5px;
+}

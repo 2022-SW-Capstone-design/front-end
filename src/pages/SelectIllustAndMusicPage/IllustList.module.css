@@ -1,8 +1,9 @@
 .illust-list {
   width: 100%;
-  background-color: rgba(127, 255, 212, 0.524);
   padding-bottom: 5vh;
   margin: 5px;
+
+  border-radius: 10px;
 }
 
 .illust-list h3 {
@@ -12,6 +13,7 @@
 .illust-list ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .illust-list li {
@@ -19,6 +21,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: teal;
+}
 
+.IllustList__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }

@@ -57,7 +57,8 @@ const CreateNewNovel = () => {
   };
 
   return (
-    <>
+    <div style={{ position: "relative" }}>
+      {imageModal && <div className={classes.ModalBackground}></div>}
       <GlobalStyle />
       <div className={classes.Container}>
         <h1>소설 작성하기</h1>
@@ -110,6 +111,7 @@ const CreateNewNovel = () => {
             variant="Dark"
             type="button"
             onClick={showImageModalHandler}
+            style={{ transition: "0.2s all" }}
           >
             이미지 업로드하기
           </Button>
@@ -137,7 +139,7 @@ const CreateNewNovel = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

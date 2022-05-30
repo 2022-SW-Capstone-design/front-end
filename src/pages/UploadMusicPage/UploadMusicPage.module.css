@@ -1,0 +1,52 @@
+.UploadMusicPage {
+  margin: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: #0b2b22;
+}
+
+.UploadMusicPage__form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  color: #0b2b22;
+}
+
+.UploadMusicPageFormLabel label {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #0b2b22;
+}
+
+.UploadMusicPageFormLabel input {
+  border: 2px solid #38d9a9;
+  border-radius: 5px;
+}
+
+.UploadMusicPagePutImgBtn {
+  text-align: center;
+  margin-left: 50%;
+}
+
+.UploadMusicPage__uploadBtn {
+  margin-top: 50px;
+  width: 400px;
+  height: 50px;
+  background-color: #38d9a9;
+  border: none;
+
+  font-size: 30px;
+  color: aliceblue;
+  border-radius: 5px;
+}
+
+.UploadMusicPage__uploadBtn:hover {
+  transition: 0.2s all;
+  background-color: #2dae87;
+  color: #0b2b22;
+}

@@ -51,6 +51,11 @@
   cursor: pointer;
 }
 
+.WriterChapterItem:active {
+  background-color: #cecece;
+  transition: none;
+}
+
 .WriterChapterItem h3 {
   font-size: 20px;
 }

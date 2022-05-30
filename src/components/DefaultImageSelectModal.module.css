@@ -1,0 +1,79 @@
+.DefaultImageSelectModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 80%;
+  height: 70vh;
+  background-color: white;
+
+  border-radius: 10px;
+}
+
+.DefaultImageSelectModal__header {
+  margin: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.DefaultImageSelectModal__header h1 {
+  font-size: 40px;
+}
+
+.DefaultImageSelectModal__image {
+  display: flex;
+  gap: 20px;
+}
+
+.DefaultImageSelectModal__image li {
+  padding: 0px;
+  width: 200px;
+  height: 200px;
+  border: 10px solid transparent;
+  padding: 10px;
+}
+
+.DefaultImageSelectModal__image li:hover {
+  transition: 0.2s all;
+  border: 10px solid #38d9a9;
+  cursor: pointer;
+}
+
+.DefaultImageSelectModal__Btn {
+  width: 200px;
+  height: 50px;
+  margin: 0 20px;
+  font-size: 25px;
+
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+}
+
+.DefaultImageSelectModal__Btn--select {
+  background-color: #38d9a9;
+}
+
+.DefaultImageSelectModal__Btn--select:hover:enabled {
+  transition: 0.2s all;
+  background-color: #2dae87;
+  color: aliceblue;
+}
+
+.DefaultImageSelectModal__Btn--cancel {
+  background-color: #6f6f6f;
+}
+
+.DefaultImageSelectModal__Btn--cancel:hover:enabled {
+  transition: 0.2s all;
+  background-color: #555;
+  color: aliceblue;
+}

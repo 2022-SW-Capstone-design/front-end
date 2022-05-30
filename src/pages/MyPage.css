@@ -1,39 +1,41 @@
+.novel_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .novel_list ul {
-    display: flex;
-    align-items: center;
-    
-    margin-top: 13px;
-    margin-bottom: 20px;
-    margin-left: 10px;
-    font-size: larger;
-    width: 310px;
+  display: flex;
+  align-items: center;
+
+  margin-top: 13px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  font-size: larger;
+  width: 1000px;
 }
 
-.novel_list h3 {
-    margin-left: 10rem;
+.novel_table {
+  background-color: blue;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 10px;
+  width: 300px;
+  border-color: black;
+  border-style: dotted;
+  border-top: none;
 }
 
-.novel_table{
-    background-color: blue;
-    text-align: center;
-    margin-top: 30px;
-    margin-left: 10px;
-    width: 300px;
-    border-color: black;
-    border-style:dotted;
-    border-top: none;
+.novel_box {
+  background-color: aqua;
+  width: 100px;
+  height: 100px;
 }
 
-.novel_box{
-    background-color: aqua;
-    width: 100px;
-    height: 100px;
+.novel_title {
+  color: black;
 }
 
-.novel_title{
-    color:black;
-}
-
-.loading{
-    margin-top: 50px;
+.loading {
+  margin-top: 50px;
 }

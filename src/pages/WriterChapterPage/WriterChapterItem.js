@@ -7,15 +7,19 @@ const WriterChapterItem = ({ value }) => {
   const navigate = useNavigate();
 
   const goToSelectIllustMusicPageHandler = useCallback(
-    () =>
-      navigate(`/novel-list/novel/${value[0].id}/select`, {
-        replace: true,
-        state: {
-          novelId: value[0].Novel_id,
-          chapterId: value[0].id,
-          title: value[0].title,
-        },
-      }),
+    (event) => {
+      const localName = event.target.localName;
+      if (localName !== "button") {
+        navigate(`/novel-list/novel/${value[0].id}/select`, {
+          replace: true,
+          state: {
+            novelId: value[0].Novel_id,
+            chapterId: value[0].id,
+            title: value[0].title,
+          },
+        });
+      }
+    },
     [navigate, value]
   );
 

@@ -1,10 +1,11 @@
+import classes from "./NovelContainer.module.css";
 import NovelCard from "../components/NovelCard";
 import "./NovelContainer.css";
 
 const NovelContainer = ({ novelListData }) => {
   return (
     <div className="container">
-      <ul style={{ display: "flex", flexDirection: "row" }}>
+      <ul className={classes.NovelContainer}>
         {novelListData.map((el, idx) => {
           return (
             <li key={idx}>

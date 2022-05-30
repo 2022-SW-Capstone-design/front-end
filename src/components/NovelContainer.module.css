@@ -1,0 +1,22 @@
+.NovelContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.NovelContainer::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.NovelContainer::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+
+.frame::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+.NovelContainer::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid #2dae87;
+  background-color: #38d9a9;
+}
