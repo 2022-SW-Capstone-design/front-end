@@ -7,6 +7,8 @@ const SearchResult = () => {
   const [novelList, setNovelList] = useState(null);
   const location = useLocation();
   const { searchData } = location.state;
+  const bearerToken = localStorage.getItem("tokenId");
+  console.log(bearerToken);
 
   useEffect(() => {
     const getSearchDataFromServer = async () => {

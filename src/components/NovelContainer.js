@@ -5,7 +5,10 @@ import "./NovelContainer.css";
 const NovelContainer = ({ novelListData }) => {
   return (
     <div className="container">
-      <ul className={classes.NovelContainer}>
+      <ul
+        className={classes.NovelContainer}
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         {novelListData.map((el, idx) => {
           return (
             <li key={idx}>
