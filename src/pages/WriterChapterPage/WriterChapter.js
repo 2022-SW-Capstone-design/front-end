@@ -29,7 +29,6 @@ const WriterChapter = () => {
     };
 
     setLoadingData(true);
-
     getNovelDataFromNovelId();
     getChapterDataFromNovelId();
     setLoadingData(false);
@@ -53,6 +52,7 @@ const WriterChapter = () => {
                 <WriterChapterItem
                   value={[chapterObj, idx, state.title]}
                   key={idx}
+                  purchased={chapterData.chapters[0].isPurchased}
                 />
               ))}
             </ul>

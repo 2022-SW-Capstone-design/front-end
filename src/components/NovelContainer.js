@@ -14,6 +14,11 @@ const NovelContainer = ({ novelListData }) => {
           );
         })}
       </ul>
+      {!novelListData.length && (
+        <h2 style={{ marginTop: "20px" }}>
+          현재 소설이 존재하지 않습니다... 🥲
+        </h2>
+      )}
     </div>
   );
 };

@@ -11,4 +11,5 @@
 
 .container ul {
   list-style: none;
+  min-width: 720px;
 }

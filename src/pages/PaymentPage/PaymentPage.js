@@ -1,9 +1,16 @@
 import classes from "./PaymentPage.module.css";
+import postData from "../../components/http-request";
 
-const PaymentPage = () => {
+const PaymentPage = ({ novelId, chapterId, contentType, contentId, price }) => {
   const currentMyPoint = 5000;
   const paymentPoint = 3000;
   const remainPoint = currentMyPoint - paymentPoint;
+
+  const paymentHandler = async () => {
+    // const responseData = await postData(`purchasing`, {
+    //   // purchasingSets: [{}],
+    // // });
+  };
 
   return (
     <div className={classes.PaymentPage}>
@@ -27,7 +34,9 @@ const PaymentPage = () => {
           </p>
         )}
         {currentMyPoint >= paymentPoint && (
-          <button className={classes.PaymentBtn}>결제하기</button>
+          <button className={classes.PaymentBtn} onClick={paymentHandler}>
+            결제하기
+          </button>
         )}
       </div>
     </div>

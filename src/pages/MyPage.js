@@ -31,7 +31,7 @@ const MyPage = () => {
         <br />
         {/* <Card/> */}
         <br />
-        {!data && <h1 className="loading">로딩중입니다...</h1>}
+        {!data && <h1 className="loading">로딩중입니다</h1>}
         {data && (
           <div className={classes.MyPage__contents}>
             <h2>{`현재 포인트: ${userAccount.point}`}</h2>
