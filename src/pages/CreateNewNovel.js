@@ -106,6 +106,7 @@ const CreateNewNovel = () => {
           />
           <br />
           <br />
+
           <Button
             className={`img_regist ${classes["Btn-img"]}`}
             variant="Dark"

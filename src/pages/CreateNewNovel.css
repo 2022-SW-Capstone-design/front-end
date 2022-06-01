@@ -21,7 +21,8 @@
 }
 .button_bundle {
   position: relative;
-  left: 32%;
+  display: flex;
+  justify-content: center;
 }
 .cancel {
   width: 70px;

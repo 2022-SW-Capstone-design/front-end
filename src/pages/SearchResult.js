@@ -8,7 +8,6 @@ const SearchResult = () => {
   const location = useLocation();
   const { searchData } = location.state;
   const bearerToken = localStorage.getItem("tokenId");
-  console.log(bearerToken);
 
   useEffect(() => {
     const getSearchDataFromServer = async () => {
