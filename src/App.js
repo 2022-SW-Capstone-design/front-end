@@ -5,12 +5,13 @@ import MyPage from "./pages/MyPage";
 import CreateNewNovel from "./pages/CreateNewNovel";
 import SearchResult from "./pages/SearchResult";
 import ReaderChapter from "./pages/ReaderChapter";
-import WriterChapter from "./pages/WriterChapterPage/WriterChapter"
+import WriterChapter from "./pages/WriterChapterPage/WriterChapter";
 import CreateNewChapter from "./pages/CreateNewChapter";
 import SelectIllustAndMusic from "./pages/SelectIllustAndMusicPage/SelectIllustAndMusic";
 import IllustEditor from "./pages/IllustEditorPage/IllustEditor";
-import UploadMusicPage from './pages/UploadMusicPage/UploadMusicPage';
+import UploadMusicPage from "./pages/UploadMusicPage/UploadMusicPage";
 import Viewer from "./pages/ViewerPage/Viewer";
+import Payment from "./pages/PaymentPage/PaymentPage";
 
 export const BearerTokenContext = createContext();
 
@@ -21,27 +22,45 @@ const App = () => {
   };
 
   return (
-      <BearerTokenContext.Provider value={{ currentToken: currentToken, setBearerToken }}>
-        <Routes>
-          <Route index element={<Main />} />
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path="/create/novel" element={<CreateNewNovel />} />
-          <Route path="/search" element={<SearchResult />} />
-          <Route path="/novel-list/novel/:title" element={<ReaderChapter />} />
-          <Route path="/novel-list/novel/:chapterId/select" element={<SelectIllustAndMusic />} />
-          <Route path="/novel-list/novel/:chapterId/viewer" element={<Viewer />} />
-          <Route path="/novel-list/novel/:chapterId/add-illust" element={<IllustEditor />}/>
-          <Route path="/novel-list/novel/:chapterId/add-music" element={<UploadMusicPage />}/>
-          <Route
-            path="/novel-list/writer/novel/:title"
-            element={<WriterChapter />}
-          />
-          <Route
-            path="/novel-list/writer/novel/editor/:title"
-            element={<CreateNewChapter />}
-          />
-        </Routes>
-      </BearerTokenContext.Provider>
+    <BearerTokenContext.Provider
+      value={{ currentToken: currentToken, setBearerToken }}
+    >
+      <Routes>
+        <Route index element={<Main />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/create/novel" element={<CreateNewNovel />} />
+        <Route path="/search" element={<SearchResult />} />
+        <Route path="/novel-list/novel/:title" element={<ReaderChapter />} />
+        <Route
+          path="/novel-list/novel/:chapterId/select"
+          element={<SelectIllustAndMusic />}
+        />
+        <Route
+          path="/novel-list/novel/:chapterId/viewer"
+          element={<Viewer />}
+        />
+        <Route
+          path="/novel-list/novel/:chapterId/add-illust"
+          element={<IllustEditor />}
+        />
+        <Route
+          path="/novel-list/novel/:chapterId/add-music"
+          element={<UploadMusicPage />}
+        />
+        <Route
+          path="/novel-list/writer/novel/:title"
+          element={<WriterChapter />}
+        />
+        <Route
+          path="/novel-list/writer/novel/editor/:title"
+          element={<CreateNewChapter />}
+        />
+        <Route
+          path="/novel-list/novel/:chapterId/payment"
+          element={<Payment />}
+        />
+      </Routes>
+    </BearerTokenContext.Provider>
   );
 };
 

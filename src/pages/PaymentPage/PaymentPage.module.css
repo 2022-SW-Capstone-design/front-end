@@ -1,0 +1,50 @@
+.PaymentPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 150px;
+
+  color: #0b2b22;
+}
+
+.PaymentPage__line {
+  width: 80%;
+  height: 2px;
+  border-top: 2px solid #38d9a9;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.PaymentPage__result {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.PaymentPage--alert {
+  color: red;
+}
+
+.PaymentPage--pass {
+  color: #38d9a9;
+}
+
+.PaymentBtn {
+  width: 200px;
+  height: 75px;
+  background-color: #38d9a9;
+  color: white;
+  font-size: 30px;
+  border: none;
+  border-radius: 10px;
+}
+
+.PaymentBtn:hover {
+  transition: 0.2s all;
+  background-color: #2dae87;
+  color: #0b2b22;
+}
+
+.PaymentBtn:active {
+  background-color: #228769;
+}

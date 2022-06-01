@@ -1,14 +1,14 @@
-.cards{
-    width: 150px;
-    height: 180px;
-    margin:0px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.cards {
+  width: 100%;
+  height: auto;
+  margin: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-.cards_Img{
-    width: 140px;
-    height: 100px;
-    margin:0px;
-    align-self: center;
+.cards_Img {
+  width: 140px;
+  height: 100px;
+  margin: 0px;
+  align-self: center;
 }

@@ -14,7 +14,7 @@ const NovelCard = ({ data }) => {
             src={data.coverFileName}
           />
           <Card.Body>
-            <Card.Title>{data.title}</Card.Title>
+            <Card.Title style={{ fontSize: "14px" }}>{data.title}</Card.Title>
             {/* <Card.Text>
                         {data.description}
                         </Card.Text> */}
@@ -25,8 +25,10 @@ const NovelCard = ({ data }) => {
                 novelId: data.id,
               }}
             >
-              <Card.Text>{data.genre}</Card.Text>
-              <Button variant="success">소설 챕터 목록</Button>
+              <Card.Text style={{ fontSize: "14px" }}>{data.genre}</Card.Text>
+              <Button variant="success" style={{ fontSize: "10px" }}>
+                소설 챕터 목록
+              </Button>
             </Link>
           </Card.Body>
         </Card>
