@@ -13,7 +13,8 @@ const SearchResult = () => {
   useEffect(() => {
     const getSearchDataFromServer = async () => {
       const responseData = await getData(
-        `search/novel?type=title&keyword=${searchData}`
+        `search/novel?type=title&keyword=${searchData}`,
+        bearerToken
       );
       const responseDataNovels = await responseData.novels;
       setNovelList(responseDataNovels);

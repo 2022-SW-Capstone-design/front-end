@@ -3,9 +3,10 @@ import axios from "axios";
 const baseURL = "https://noveland.ml";
 
 export const getData = async (url, bearerToken) => {
+  const tokenValue = `${bearerToken ? `Bearer ${bearerToken}` : ""}`;
   const response = await axios.get(`${baseURL}/${url}`, {
     headers: {
-      Authorization: `${bearerToken ? `Bearer ${bearerToken}` : ""}`,
+      Authorization: tokenValue,
     },
     credentials: "same-origin",
   });
