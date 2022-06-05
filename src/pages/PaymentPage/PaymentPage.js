@@ -1,16 +1,38 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { postData } from "../../components/http-request";
 import classes from "./PaymentPage.module.css";
-import postData from "../../components/http-request";
 
-const PaymentPage = ({ novelId, chapterId, contentType, contentId, price }) => {
-  const currentMyPoint = 5000;
-  const paymentPoint = 3000;
-  const remainPoint = currentMyPoint - paymentPoint;
+// '/purchasing'
+
+const PaymentPage = () => {
+  const location = useLocation();
+  const state = location.state;
+  const { novelId, chapterId, paymentPrice } = state;
+  const paymentPoint = state.paymentPrice;
+  const currentMyPoint = 20000;
+  const remainPoint = currentMyPoint - paymentPrice;
+  const bearerToken = localStorage.getItem("tokenId");
 
   const paymentHandler = async () => {
-    // const responseData = await postData(`purchasing`, {
-    //   // purchasingSets: [{}],
-    // // });
+    const response = await postData(
+      "purchasing",
+      {
+        purchasingSets: [
+          {
+            novelId,
+            chapterId,
+            contentType: "chapter",
+            contentId: null,
+            price: paymentPrice,
+          },
+        ],
+      },
+      bearerToken
+    );
   };
+
+  useEffect(() => {}, []);
 
   return (
     <div className={classes.PaymentPage}>

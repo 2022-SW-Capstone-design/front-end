@@ -10,12 +10,24 @@ export const getData = async (url, bearerToken) => {
     credentials: "same-origin",
   });
   const responseData = await response.data;
+  return responseData;
+};
 
+export const getDataWithUserID = async (url, userId) => {
+  const response = await axios.get(
+    `${baseURL}/${url}`,
+    {
+      userId,
+    },
+    { withCredentials: true }
+  );
+
+  const responseData = response.data;
   return responseData;
 };
 
 export const postData = async (url, data, token) => {
-  const bearerToken = token ? token : null;
+  const bearerToken = token ? token : "";
   const response = await axios.post(`${baseURL}/${url}`, data, {
     headers: {
       Authorization: `${bearerToken ? `Bearer ${bearerToken}` : ""}`,

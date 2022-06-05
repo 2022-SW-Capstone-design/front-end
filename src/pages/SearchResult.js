@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getData } from "../components/http-request";
+import { getDataWithUserID } from "../components/http-request";
 import NovelContainer from "../components/NovelContainer";
 
 const SearchResult = () => {
   const [novelList, setNovelList] = useState(null);
   const location = useLocation();
   const { searchData } = location.state;
-  const bearerToken = localStorage.getItem("tokenId");
+  const userId = searchData.User_id;
 
   useEffect(() => {
     const getSearchDataFromServer = async () => {
-      const responseData = await getData(
+      const responseData = await getDataWithUserID(
         `search/novel?type=title&keyword=${searchData}`,
-        bearerToken
+        userId
       );
       const responseDataNovels = await responseData.novels;
       setNovelList(responseDataNovels);
@@ -21,6 +21,8 @@ const SearchResult = () => {
 
     getSearchDataFromServer();
   }, []);
+
+  console.log(novelList);
 
   return (
     <>

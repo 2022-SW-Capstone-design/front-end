@@ -22,6 +22,8 @@ const WriterChapterItem = ({ value, purchased }) => {
     [navigate, value]
   );
 
+  console.log(value);
+
   return (
     <li
       className={classes.WriterChapterItem}
@@ -57,6 +59,8 @@ const WriterChapterItem = ({ value, purchased }) => {
           <Link
             to={`/novel-list/novel/${value[0].id}/payment`}
             state={{
+              novelId: value[0].Novel_id,
+              chapterId: value[0].id,
               paymentPrice: value[0].price,
             }}
           >
