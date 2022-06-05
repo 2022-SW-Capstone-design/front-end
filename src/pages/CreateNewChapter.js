@@ -84,7 +84,7 @@ const CreateNewChapter = () => {
         <div id="toastUIEditor">
           <div id="button" className={classes.chapterBtn}>
             <Link
-              to={`/novel-list/writer/novel/${location.state.title}`}
+              to={`/mypage`}
               state={{
                 title: location.state.title,
                 novelId: location.state.novelId,

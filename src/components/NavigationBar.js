@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { gapi } from "gapi-script";
 import "./NavigationBar.css";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const clientId =
   "112172327061-95mqb878sgpt8t955rkkdug7mvgco8od.apps.googleusercontent.com";
@@ -14,6 +15,7 @@ const NavigationBar = () => {
   // 로그인 여부를 확인할 수 있는 state를 생성
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchData, setSearchData] = useState(null);
+  const navigate = useNavigate();
 
   // 로그인/로그아웃
   useEffect(() => {
@@ -28,6 +30,12 @@ const NavigationBar = () => {
     }, 2000);
   }, []);
 
+  const handleKeyPress = (target) => {
+    if (target.charCode === 13) {
+      navigate("/search", { state: { searchData } });
+    }
+  };
+
   return (
     <>
       <div className="NavigationBar">
@@ -39,6 +47,8 @@ const NavigationBar = () => {
             className="navbar_searchInput"
             type="/text"
             onChange={(e) => setSearchData(e.target.value)}
+            onKeyPress={handleKeyPress}
+            style={{ fontSize: "20px" }}
           />
           <Link
             to="/search"
@@ -54,7 +64,7 @@ const NavigationBar = () => {
             <a className="navbar_option" href="/Mypage">
               마이페이지
             </a>
-            <a className="navbar_option" href="create/novel">
+            <a className="navbar_option" href="/create/novel">
               새 소설 등록
             </a>
           </div>

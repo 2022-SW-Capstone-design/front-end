@@ -73,6 +73,7 @@
   margin: 10px;
   width: 30px;
   border-radius: 5px;
+  font-size: 17px;
 }
 
 .Btn--upload-chapter {
@@ -83,8 +84,9 @@
   text-align: center;
   padding-bottom: 35px;
   padding-top: 10px;
-
   border-radius: 5px;
+
+  font-size: 20px;
 }
 
 .Btn--upload-chapter:hover {

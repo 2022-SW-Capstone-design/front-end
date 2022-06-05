@@ -107,7 +107,7 @@ const ToastUIEditor = () => {
           ref={editorRef}
         />
       )}
-      <Link to={`/mypage`}>
+      <Link to={`mypage`}>
         <button
           onClick={handleChangeEditor}
           className={classes.ToastUIEditorBtn}

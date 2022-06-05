@@ -22,8 +22,6 @@ const WriterChapterItem = ({ value, purchased }) => {
     [navigate, value]
   );
 
-  console.log(value);
-
   return (
     <li
       className={classes.WriterChapterItem}

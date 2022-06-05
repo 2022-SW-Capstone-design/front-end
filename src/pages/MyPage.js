@@ -10,6 +10,7 @@ import classes from "./MyPage.module.css";
 const MyPage = () => {
   const bearerToken = localStorage.getItem("tokenId");
   const [data, setData] = useState(null);
+  const [remainCoin, setRemainCoin] = useState(null);
 
   useEffect(() => {
     const getWrittenNovelsData = async () => {
@@ -17,8 +18,13 @@ const MyPage = () => {
       setData(response);
     };
 
+    const getUserData = async () => {
+      const response = await getData("info/user", bearerToken);
+      setRemainCoin(response.coin);
+    };
     setTimeout(() => {
       getWrittenNovelsData();
+      getUserData();
     }, 1000);
   }, []);
 
@@ -34,7 +40,7 @@ const MyPage = () => {
         {!data && <h1 className="loading">로딩중입니다</h1>}
         {data && (
           <div className={classes.MyPage__contents}>
-            <h2>{`현재 포인트: ${userAccount.point}`}</h2>
+            <h2>{`현재 포인트: ${remainCoin}`}</h2>
             <br />
             <br />
             <div className="novel_list">

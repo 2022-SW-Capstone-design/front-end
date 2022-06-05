@@ -6,8 +6,6 @@ import WriterChapterItem from "./WriterChapterItem";
 import { getData } from "../../components/http-request";
 import classes from "./WriterChapter.module.css";
 
-// /info/novel/:novelId
-
 const WriterChapter = () => {
   const [novelData, setNovelData] = useState();
   const [chapterData, setChapterData] = useState(null);
@@ -53,7 +51,7 @@ const WriterChapter = () => {
                 <WriterChapterItem
                   value={[chapterObj, idx, state.title]}
                   key={idx}
-                  purchased={chapterData.chapters[0].isPurchased}
+                  purchased={chapterData.chapters[idx].isPurchased}
                 />
               ))}
             </ul>
