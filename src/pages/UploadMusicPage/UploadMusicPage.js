@@ -14,8 +14,6 @@ const UploadMusicPage = () => {
 
   useEffect(() => {
     musicTitle && uploadedMusic ? setBtnDisabled(false) : setBtnDisabled(true);
-
-    console.log(btnDisabled);
   }, [musicTitle, uploadedMusic, btnDisabled]);
 
   const onFileChange = (event) => {

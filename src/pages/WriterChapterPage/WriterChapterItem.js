@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import classes from "./WriterChapter.module.css";
 import { useNavigate } from "react-router-dom";
 
-const WriterChapterItem = ({ value, purchased }) => {
+const WriterChapterItem = ({ value, purchased, isWritten }) => {
   const navigate = useNavigate();
   const goToSelectIllustMusicPageHandler = useCallback(
     (event) => {

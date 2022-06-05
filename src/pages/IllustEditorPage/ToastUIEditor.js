@@ -11,11 +11,11 @@ import classes from "./ToastUIEditor.module.css";
 const ToastUIEditor = () => {
   const [initContent, setInitContent] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
+  const [imageURLData, setImageURLData] = useState([]);
   const location = useLocation();
   const bearerToken = localStorage.getItem("tokenId");
   const { novelId, chapterId } = location.state;
   const editorRef = useRef("");
-  const imageURLData = [];
   const imageIdxData = [];
 
   const uploadImage = async (blob) => {
@@ -29,10 +29,12 @@ const ToastUIEditor = () => {
       bearerToken
     );
     const getImageURLData = await responseData.url;
-    imageURLData.push(getImageURLData);
+    setImageURLData((prevArr) => [...prevArr, getImageURLData]);
 
     return getImageURLData;
   };
+
+  console.log(imageURLData);
 
   const handleChangeEditor = async () => {
     const currentContent = editorRef.current.getInstance().getMarkdown();

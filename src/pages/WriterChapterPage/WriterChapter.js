@@ -15,6 +15,7 @@ const WriterChapter = () => {
   const data = location.state;
   const bearerToken = localStorage.getItem("tokenId");
   const purchased = data.isPurchased;
+  const isWritten = data.isWritten;
 
   useEffect(() => {
     const getNovelDataFromNovelId = async () => {
@@ -59,7 +60,7 @@ const WriterChapter = () => {
         )}
         {!!chapterData && !chapterData?.chapters?.length && (
           <>
-            <h1>현재 챕터가 존재하지 않습니다 😢</h1>
+            <h1>현재 챕터가 존재하지 않습니다 :(</h1>
           </>
         )}
         <Link
@@ -69,7 +70,7 @@ const WriterChapter = () => {
             novelId: data.novelId,
           }}
         >
-          {!!purchased && (
+          {!!purchased && isWritten !== false && (
             <button className={classes["Btn--upload-chapter"]}>
               챕터 작성하기
             </button>

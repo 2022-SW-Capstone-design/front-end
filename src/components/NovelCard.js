@@ -3,7 +3,7 @@ import "./NovelCard.css";
 import { Card, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const NovelCard = ({ data }) => {
+const NovelCard = ({ data, isWritten }) => {
   return (
     <>
       <Container>
@@ -15,14 +15,12 @@ const NovelCard = ({ data }) => {
           />
           <Card.Body>
             <Card.Title style={{ fontSize: "14px" }}>{data.title}</Card.Title>
-            {/* <Card.Text>
-                        {data.description}
-                        </Card.Text> */}
             <Link
               to={`/novel-list/writer/novel/${data.title}`}
               state={{
                 ...data,
                 novelId: data.id,
+                isWritten: isWritten,
               }}
             >
               <Card.Text style={{ fontSize: "14px" }}>{data.genre}</Card.Text>

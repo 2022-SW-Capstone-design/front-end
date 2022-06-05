@@ -16,6 +16,9 @@ const IllustList = ({ selectHandler, selectIdHandler, select }) => {
       const getIllustListDataFromServer = await getData(
         `list/illust/${novelId}/${chapterId}`
       );
+      console.log(novelId);
+      console.log(chapterId);
+
       const illustSetIdDataList = getIllustListDataFromServer.map(
         (el) => el.illustSetId
       );

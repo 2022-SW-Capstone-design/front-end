@@ -2,7 +2,7 @@ import classes from "./NovelContainer.module.css";
 import NovelCard from "../components/NovelCard";
 import "./NovelContainer.css";
 
-const NovelContainer = ({ novelListData }) => {
+const NovelContainer = ({ novelListData, isWritten }) => {
   return (
     <div className="container">
       <ul
@@ -12,7 +12,7 @@ const NovelContainer = ({ novelListData }) => {
         {novelListData.map((el, idx) => {
           return (
             <li key={idx}>
-              <NovelCard data={el} />
+              <NovelCard data={el} isWritten={isWritten} />
             </li>
           );
         })}

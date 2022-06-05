@@ -55,6 +55,7 @@ const MyPage = () => {
               <NovelContainer
                 title="내가 쓴 소설 목록"
                 novelListData={myWrittenNoveldata}
+                state={{ written: true }}
               />
             </div>
           </div>
@@ -64,8 +65,8 @@ const MyPage = () => {
             <div className="novel_list">
               <h3>구매한 소설 목록</h3>
               <NovelContainer
-                title="내가 구매한 소설 목록"
                 novelListData={myPurchasedNovelData}
+                isWritten={false}
               />
             </div>
           </div>
