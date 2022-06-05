@@ -26,7 +26,7 @@ const PaymentPage = () => {
             novelId,
             chapterId,
             contentType,
-            contentId,
+            contentId: contentId,
             price: paymentPrice,
           },
         ],

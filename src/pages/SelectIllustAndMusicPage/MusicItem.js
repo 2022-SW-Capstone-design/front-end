@@ -19,6 +19,8 @@ const MusicItem = ({
     checked && !isPurchased && disableHandler();
   }, [checked, isPurchased, enableHandler, disableHandler]);
 
+  console.log(novelId, chapterId);
+
   return (
     <div
       className={`${classes.MusicItem} ${

@@ -52,6 +52,8 @@ const MusicList = ({
             {musicList.map((musicData, idx) => (
               <li key={idx}>
                 <MusicItem
+                  novelId={novelId}
+                  chapterId={chapterId}
                   data={musicData}
                   checked={idx === select}
                   musicId={musicList[idx].musicSetId}
