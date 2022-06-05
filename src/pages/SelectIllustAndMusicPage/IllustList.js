@@ -9,31 +9,43 @@ const IllustList = ({ selectHandler, selectIdHandler, select }) => {
   const { chapterId, novelId } = location.state;
   const [urlData, setUrlData] = useState(null);
   const [artistData, setArtistData] = useState([]);
+  const [isPurchased, setIsPurchased] = useState([]);
   const [idData, setIdData] = useState([]);
+  const [price, setPrice] = useState([]);
+
+  const bearerToken = localStorage.getItem("tokenId");
 
   useEffect(() => {
     const illustList = async () => {
       const getIllustListDataFromServer = await getData(
-        `list/illust/${novelId}/${chapterId}`
+        `list/illust/${novelId}/${chapterId}`,
+        bearerToken
       );
-      console.log(novelId);
-      console.log(chapterId);
 
       const illustSetIdDataList = getIllustListDataFromServer.map(
         (el) => el.illustSetId
       );
+
       const urlDataList = getIllustListDataFromServer.map((el) => el.coverURL);
+
       const artistDataList = getIllustListDataFromServer.map(
         (el) => el.nickname
       );
+      const isPurchasedList = getIllustListDataFromServer.map(
+        (el) => el.isPurchased
+      );
+
+      const priceList = getIllustListDataFromServer.map((el) => el.price);
 
       setUrlData(urlDataList);
       setArtistData(artistDataList);
       setIdData(illustSetIdDataList);
+      setIsPurchased(isPurchasedList);
+      setPrice(priceList);
     };
 
     illustList();
-  }, [chapterId, novelId]);
+  }, [chapterId, novelId, bearerToken]);
 
   return (
     <div>
@@ -48,7 +60,11 @@ const IllustList = ({ selectHandler, selectIdHandler, select }) => {
                 url={url}
                 artist={artistData[idx]}
                 illustId={idData[idx]}
+                isPurchased={isPurchased[idx]}
                 checked={idx === select}
+                Novel_id={novelId}
+                id={chapterId}
+                price={price[idx]}
                 onSelect={(id) => {
                   selectHandler(idx);
                   selectIdHandler(id);

@@ -32,6 +32,7 @@ const SelectIllustAndMusic = () => {
         <IllustList
           state={{
             ...location.state,
+            novelId,
           }}
           selectHandler={setSelectedIllustItem}
           selectIdHandler={setSelectedIllustId}
@@ -40,6 +41,8 @@ const SelectIllustAndMusic = () => {
         <MusicList
           state={{
             ...location.state,
+            novelId,
+            chapterId,
           }}
           selectHandler={setSelectedMusicItem}
           selectIdHandler={setSelectedMusicId}

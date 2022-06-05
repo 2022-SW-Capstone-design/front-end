@@ -7,14 +7,19 @@ import classes from "./MusicList.module.css";
 const MusicList = ({ selectHandler, selectIdHandler, select }) => {
   const location = useLocation();
   const [musicList, setMusicList] = useState(null);
+
   const novelId = location.state.novelId;
   const chapterId = location.state.chapterId;
+
+  const bearerToken = localStorage.getItem("tokenId");
 
   useEffect(() => {
     const getMusicItemsDataFromServer = async () => {
       const getMusicDataFromServer = await getData(
-        `list/music/${novelId}/${chapterId}`
+        `list/music/${novelId}/${chapterId}`,
+        bearerToken
       );
+
       const musicSets = getMusicDataFromServer.musicSets;
 
       setMusicList(musicSets);
@@ -44,6 +49,8 @@ const MusicList = ({ selectHandler, selectIdHandler, select }) => {
                   data={musicData}
                   checked={idx === select}
                   musicId={musicList[idx].musicSetId}
+                  isPurchased={musicList[idx].isPurchased}
+                  price={musicList[idx].price}
                   onSelect={(id) => {
                     selectHandler(idx);
                     selectIdHandler(id);

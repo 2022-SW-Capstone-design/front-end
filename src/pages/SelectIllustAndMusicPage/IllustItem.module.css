@@ -43,7 +43,20 @@
   border-radius: 5px;
 }
 
-.IllustItem--selected {
+.IllustItem--selected--purchased {
   border: 5px solid #0b2b22;
   border-radius: none;
+}
+
+.IllustItem--selected--not-purchased {
+  border: 5px solid red;
+  border-radius: none;
+}
+
+.IllustItem--selected--not-purchased::after {
+  content: "구매되지 않았습니다";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transition: none;
 }

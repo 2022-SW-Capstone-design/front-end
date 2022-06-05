@@ -34,8 +34,6 @@ const ToastUIEditor = () => {
     return getImageURLData;
   };
 
-  console.log(imageURLData);
-
   const handleChangeEditor = async () => {
     const currentContent = editorRef.current.getInstance().getMarkdown();
     const sumLength = currentContent.length;

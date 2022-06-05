@@ -22,8 +22,6 @@ const SearchResult = () => {
     getSearchDataFromServer();
   }, []);
 
-  console.log(novelList);
-
   return (
     <>
       {!novelList && <h1>로딩중입니다...</h1>}

@@ -1,8 +1,37 @@
 .MusicItem {
   border: 2px solid orange;
   border-radius: 5px;
+  position: relative;
+}
+
+.MusicItem__btn {
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.MusicItem__btn:hover {
+  background-color: rgb(215, 141, 2);
+}
+
+.MusicItem__btn:active {
+  background-color: rgb(190, 124, 0);
 }
 
 .MusicItem--selected {
   border: 2px solid #2dae87;
+}
+
+.MusicItem--selected--alert {
+  border: 2px solid red;
+}
+
+.MusicItem--selected--alert::after {
+  content: "구매하지 않은 음악입니다.";
+  color: red;
 }
