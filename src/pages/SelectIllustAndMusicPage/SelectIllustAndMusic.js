@@ -1,12 +1,23 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import IllustList from "./IllustList";
 import MusicList from "./MusicList";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import classes from "./SelectIllustAndMusic.module.css";
 import { Button } from "react-bootstrap";
 
+const reducer = (_, action) => {
+  switch (action.type) {
+    case "ENABLED":
+      return false;
+    case "DISABLED":
+      return true;
+    default:
+      return false;
+  }
+};
+
 const SelectIllustAndMusic = () => {
+  const [readButtonDisabled, dispatch] = useReducer(reducer, false);
   const location = useLocation();
   const [selectedIllustItem, setSelectedIllustItem] = useState(null);
   const [selectedIllustId, setSelectedIllustId] = useState(null);
@@ -21,6 +32,15 @@ const SelectIllustAndMusic = () => {
     setSelectedIllustId(null);
     setSelectedMusicItem(null);
     setSelectedMusicId(null);
+    makeEnabled();
+  };
+
+  const makeEnabled = () => {
+    dispatch({ type: "ENABLED" });
+  };
+
+  const makeDisabled = () => {
+    dispatch({ type: "DISABLED" });
   };
 
   return (
@@ -36,6 +56,8 @@ const SelectIllustAndMusic = () => {
           }}
           selectHandler={setSelectedIllustItem}
           selectIdHandler={setSelectedIllustId}
+          enableHandler={makeEnabled}
+          disableHandler={makeDisabled}
           select={selectedIllustItem}
         />
         <MusicList
@@ -46,6 +68,8 @@ const SelectIllustAndMusic = () => {
           }}
           selectHandler={setSelectedMusicItem}
           selectIdHandler={setSelectedMusicId}
+          enableHandler={makeEnabled}
+          disableHandler={makeDisabled}
           select={selectedMusicItem}
         />
       </div>
@@ -60,9 +84,11 @@ const SelectIllustAndMusic = () => {
           selectedMusicId,
         }}
       >
-        <div className={classes["chapter-read"]}>
-          <Button variant="success">챕터 읽기</Button>
-        </div>
+        {!readButtonDisabled && (
+          <div className={classes["chapter-read"]}>
+            <Button variant="success">챕터 읽기</Button>
+          </div>
+        )}
       </Link>
       <div className={classes["choose-cancel"]}>
         <Button variant="secondary" onClick={deleteSelectedHandler}>

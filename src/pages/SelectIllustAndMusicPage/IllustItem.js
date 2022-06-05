@@ -1,8 +1,16 @@
 import classes from "./IllustItem.module.css";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const IllustItem = (props) => {
   const purchased = props.isPurchased;
+  const enableHandler = props.enableHandler;
+  const disableHandler = props.disableHandler;
+
+  useEffect(() => {
+    props.checked && !!purchased && enableHandler();
+    props.checked && !purchased && disableHandler();
+  }, [props.checked, purchased, enableHandler, disableHandler]);
 
   return (
     <div style={{ display: "relative" }}>

@@ -4,7 +4,13 @@ import { getData } from "../../components/http-request";
 import MusicItem from "./MusicItem";
 import classes from "./MusicList.module.css";
 
-const MusicList = ({ selectHandler, selectIdHandler, select }) => {
+const MusicList = ({
+  selectHandler,
+  selectIdHandler,
+  enableHandler,
+  disableHandler,
+  select,
+}) => {
   const location = useLocation();
   const [musicList, setMusicList] = useState(null);
 
@@ -55,6 +61,8 @@ const MusicList = ({ selectHandler, selectIdHandler, select }) => {
                     selectHandler(idx);
                     selectIdHandler(id);
                   }}
+                  enableHandler={enableHandler}
+                  disableHandler={disableHandler}
                 />
               </li>
             ))}

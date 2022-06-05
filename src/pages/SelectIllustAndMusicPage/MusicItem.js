@@ -1,5 +1,6 @@
 import classes from "./MusicItem.module.css";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const MusicItem = ({
   data,
@@ -10,7 +11,14 @@ const MusicItem = ({
   novelId,
   chapterId,
   price,
+  enableHandler,
+  disableHandler,
 }) => {
+  useEffect(() => {
+    checked && !!isPurchased && enableHandler();
+    checked && !isPurchased && disableHandler();
+  }, [checked, isPurchased, enableHandler, disableHandler]);
+
   return (
     <div
       className={`${classes.MusicItem} ${

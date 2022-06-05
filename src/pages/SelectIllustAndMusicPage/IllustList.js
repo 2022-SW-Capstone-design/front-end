@@ -4,7 +4,13 @@ import { getData } from "../../components/http-request";
 import IllustItem from "./IllustItem";
 import classes from "./IllustList.module.css";
 
-const IllustList = ({ selectHandler, selectIdHandler, select }) => {
+const IllustList = ({
+  selectHandler,
+  selectIdHandler,
+  enableHandler,
+  disableHandler,
+  select,
+}) => {
   const location = useLocation();
   const { chapterId, novelId } = location.state;
   const [urlData, setUrlData] = useState(null);
@@ -69,6 +75,8 @@ const IllustList = ({ selectHandler, selectIdHandler, select }) => {
                   selectHandler(idx);
                   selectIdHandler(id);
                 }}
+                enableHandler={enableHandler}
+                disableHandler={disableHandler}
               />
             ))}
           </ul>
