@@ -5,7 +5,18 @@ import { useState, useReducer } from "react";
 import classes from "./SelectIllustAndMusic.module.css";
 import { Button } from "react-bootstrap";
 
-const reducer = (_, action) => {
+const musicReducer = (_, action) => {
+  switch (action.type) {
+    case "ENABLED":
+      return false;
+    case "DISABLED":
+      return true;
+    default:
+      return false;
+  }
+};
+
+const illustReducer = (_, action) => {
   switch (action.type) {
     case "ENABLED":
       return false;
@@ -17,7 +28,8 @@ const reducer = (_, action) => {
 };
 
 const SelectIllustAndMusic = () => {
-  const [readButtonDisabled, dispatch] = useReducer(reducer, false);
+  const [musicDisable, musicDispatch] = useReducer(musicReducer, false);
+  const [illustDisable, illustDispatch] = useReducer(illustReducer, false);
   const location = useLocation();
   const [selectedIllustItem, setSelectedIllustItem] = useState(null);
   const [selectedIllustId, setSelectedIllustId] = useState(null);
@@ -32,15 +44,23 @@ const SelectIllustAndMusic = () => {
     setSelectedIllustId(null);
     setSelectedMusicItem(null);
     setSelectedMusicId(null);
-    makeEnabled();
+    musicEnabled();
   };
 
-  const makeEnabled = () => {
-    dispatch({ type: "ENABLED" });
+  const musicEnabled = () => {
+    musicDispatch({ type: "ENABLED" });
   };
 
-  const makeDisabled = () => {
-    dispatch({ type: "DISABLED" });
+  const musicDisabled = () => {
+    musicDispatch({ type: "DISABLED" });
+  };
+
+  const illustEnabled = () => {
+    illustDispatch({ type: "ENABLED" });
+  };
+
+  const illustDisabled = () => {
+    illustDispatch({ type: "DISABLED" });
   };
 
   return (
@@ -56,8 +76,8 @@ const SelectIllustAndMusic = () => {
           }}
           selectHandler={setSelectedIllustItem}
           selectIdHandler={setSelectedIllustId}
-          enableHandler={makeEnabled}
-          disableHandler={makeDisabled}
+          enableHandler={illustEnabled}
+          disableHandler={illustDisabled}
           select={selectedIllustItem}
         />
         <MusicList
@@ -68,8 +88,8 @@ const SelectIllustAndMusic = () => {
           }}
           selectHandler={setSelectedMusicItem}
           selectIdHandler={setSelectedMusicId}
-          enableHandler={makeEnabled}
-          disableHandler={makeDisabled}
+          enableHandler={musicEnabled}
+          disableHandler={musicDisabled}
           select={selectedMusicItem}
         />
       </div>
@@ -84,7 +104,7 @@ const SelectIllustAndMusic = () => {
           selectedMusicId,
         }}
       >
-        {!readButtonDisabled && (
+        {!musicDisable && !illustDisable && (
           <div className={classes["chapter-read"]}>
             <Button variant="success">챕터 읽기</Button>
           </div>
