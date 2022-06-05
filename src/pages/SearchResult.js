@@ -7,7 +7,7 @@ const SearchResult = () => {
   const [novelList, setNovelList] = useState(null);
   const location = useLocation();
   const { searchData } = location.state;
-  const userId = searchData.User_id;
+  const userId = searchData?.User_id;
 
   useEffect(() => {
     const getSearchDataFromServer = async () => {
@@ -26,10 +26,18 @@ const SearchResult = () => {
     <>
       {!novelList && <h1>로딩중입니다...</h1>}
       {!!novelList && (
-        <>
+        <div
+          style={{
+            marginTop: "50px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <h1>검색 결과 페이지</h1>
           <NovelContainer novelListData={novelList} />
-        </>
+        </div>
       )}
     </>
   );
