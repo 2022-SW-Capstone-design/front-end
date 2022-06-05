@@ -37,6 +37,7 @@ const IllustItem = (props) => {
                 chapterId: props.id,
                 paymentPrice: props.price,
                 contentType: "illust",
+                contentId: props.illustId,
               }}
             >
               <button

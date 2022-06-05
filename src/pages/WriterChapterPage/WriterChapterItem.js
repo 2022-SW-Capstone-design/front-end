@@ -60,6 +60,8 @@ const WriterChapterItem = ({ value, purchased, isWritten }) => {
               novelId: value[0].Novel_id,
               chapterId: value[0].id,
               paymentPrice: value[0].price,
+              contentType: "chapter",
+              contentId: null,
             }}
           >
             <button className={classes.Btn}>챕터 구매</button>

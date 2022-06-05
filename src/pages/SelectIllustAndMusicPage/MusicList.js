@@ -27,7 +27,7 @@ const MusicList = ({
       );
 
       const musicSets = getMusicDataFromServer.musicSets;
-
+      console.log(musicSets);
       setMusicList(musicSets);
     };
 

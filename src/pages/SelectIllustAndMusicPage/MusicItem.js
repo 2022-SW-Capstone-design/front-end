@@ -38,6 +38,7 @@ const MusicItem = ({
             chapterId: chapterId,
             paymentPrice: price,
             contentType: "music",
+            contentId: musicId,
           }}
         >
           <button className={classes.MusicItem__btn}>구매</button>

@@ -10,7 +10,7 @@ const PaymentPage = () => {
   const [coinData, setCoinData] = useState();
   const location = useLocation();
   const state = location.state;
-  const { novelId, chapterId, paymentPrice, contentType } = state;
+  const { novelId, chapterId, paymentPrice, contentType, contentId } = state;
   const paymentPoint = state.paymentPrice;
   const currentMyPoint = 20000;
   const remainPoint = currentMyPoint - paymentPrice;
@@ -26,7 +26,7 @@ const PaymentPage = () => {
             novelId,
             chapterId,
             contentType,
-            contentId: null,
+            contentId,
             price: paymentPrice,
           },
         ],
