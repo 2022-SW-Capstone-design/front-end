@@ -85,6 +85,7 @@ const ToastUIEditor = () => {
       {!initContent && <h3>소설을 로딩하고 있는 중입니다...</h3>}
       {initContent && (
         <Editor
+          initialEditType="wysiwyg"
           usageStatistics={false}
           previewStyle="tab"
           height="600px"
@@ -107,7 +108,7 @@ const ToastUIEditor = () => {
           ref={editorRef}
         />
       )}
-      <Link to={`mypage`}>
+      <Link to={"/mypage"}>
         <button
           onClick={handleChangeEditor}
           className={classes.ToastUIEditorBtn}

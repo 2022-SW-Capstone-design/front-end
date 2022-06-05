@@ -8,7 +8,7 @@ const WriterChapterItem = ({ value, purchased }) => {
   const goToSelectIllustMusicPageHandler = useCallback(
     (event) => {
       const localName = event.target.localName;
-      if (localName !== "button") {
+      if (localName !== "button" && purchased) {
         navigate(`/novel-list/novel/${value[0].id}/select`, {
           replace: true,
           state: {
@@ -19,7 +19,7 @@ const WriterChapterItem = ({ value, purchased }) => {
         });
       }
     },
-    [navigate, value]
+    [navigate, value, purchased]
   );
 
   return (

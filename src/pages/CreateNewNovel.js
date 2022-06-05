@@ -1,6 +1,6 @@
 import DefaultImageSelectModal from "../components/DefaultImageSelectModal";
 import React, { useState, useReducer, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GlobalStyle from "../GlobalStyle";
 import { postData } from "../components/http-request";
 import userAccount from "../components/userAccount";
@@ -123,9 +123,14 @@ const CreateNewNovel = () => {
             />
           )}
           <div className="button_bundle">
-            <Button className={`cancel ${classes["Btn"]}`} variant="secondary">
-              취소
-            </Button>
+            <Link to="/mypage">
+              <Button
+                className={`cancel ${classes["Btn"]}`}
+                variant="secondary"
+              >
+                취소
+              </Button>
+            </Link>
             <Button
               className={`novel_regist ${classes["Btn"]} ${classes["Btn-upload"]}`}
               variant="Dark"

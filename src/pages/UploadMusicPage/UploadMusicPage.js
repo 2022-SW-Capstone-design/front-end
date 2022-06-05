@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postData } from "../../components/http-request";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -7,9 +7,16 @@ import classes from "./UploadMusicPage.module.css";
 const UploadMusicPage = () => {
   const [uploadedMusic, setUploadedMusic] = useState(null);
   const [musicTitle, setMusicTitle] = useState(null);
+  const [btnDisabled, setBtnDisabled] = useState(true);
   const bearerToken = localStorage.getItem("tokenId");
   const location = useLocation();
   const state = location.state;
+
+  useEffect(() => {
+    musicTitle && uploadedMusic ? setBtnDisabled(false) : setBtnDisabled(true);
+
+    console.log(btnDisabled);
+  }, [musicTitle, uploadedMusic, btnDisabled]);
 
   const onFileChange = (event) => {
     setUploadedMusic({
@@ -59,6 +66,7 @@ const UploadMusicPage = () => {
         <button
           className={classes["UploadMusicPage__uploadBtn"]}
           onClick={uploadMusicHandler}
+          disabled={btnDisabled}
         >
           음악 업로드
         </button>

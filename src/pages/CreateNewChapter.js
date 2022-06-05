@@ -68,6 +68,7 @@ const CreateNewChapter = () => {
           />
         </div>
         <Editor
+          initialEditType="wysiwyg"
           usageStatistics={false}
           previewStyle="tab"
           height="600px"
