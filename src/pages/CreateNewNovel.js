@@ -139,6 +139,9 @@ const CreateNewNovel = () => {
                 handleSubmit();
                 navigate("/mypage");
               }}
+              disabled={
+                !currentData.title || !currentData.coverImage ? true : false
+              }
             >
               소설 올리기
             </Button>
