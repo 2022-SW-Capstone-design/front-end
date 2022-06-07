@@ -24,6 +24,11 @@ const CreateNewChapter = () => {
 
   const handleChangeEditor = async () => {
     const currentContent = editorRef.current.getInstance().getMarkdown();
+    if (currentContent.length === 0) {
+      alert("현재 소설의 내용이 등록되지 않았습니다!");
+      return;
+    }
+
     const sumLength = currentContent.length;
     const getImageIndexArray = [];
 
